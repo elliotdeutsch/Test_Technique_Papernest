@@ -1,4 +1,4 @@
-<div class="add-task-field">
+<div class="add-task-field flex-row jc-sp-bet al-center gap-5">
   <input class="my-input" type="text" [(ngModel)]="newTaskLabel" placeholder="Nouvelle tâche..."
     (keyup.enter)="addNewTask()" />
   <button (click)="addNewTask()" [disabled]="!newTaskLabel" class="add-btn">

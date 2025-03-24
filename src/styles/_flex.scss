@@ -1,0 +1,45 @@
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.al-center {
+    align-items: center;
+}
+
+.al-start {
+    align-items: flex-start;
+}
+
+.al-end {
+    align-items: flex-end;
+}
+
+.jc-center {
+    justify-content: center;
+}
+
+.jc-sp-bet {
+    justify-content: space-between;
+}
+
+.jc-start {
+    justify-content: flex-start;
+}
+
+.jc-end {
+    justify-content: flex-end;
+}
+
+// Permet de définir un gap personnalisé
+// Ex: .gap-5 { gap: 5px; }, .gap-10 { gap: 10px; }...etc
+@for $i from 1 through 10 {
+    .gap-#{$i * 5} {
+        gap: #{$i * 5}px;
+    }
+}

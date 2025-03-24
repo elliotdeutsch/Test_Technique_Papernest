@@ -1,4 +1,4 @@
-<div class="task-list-layout" cdkDropList (cdkDropListDropped)="drop($event)">
+<div class="task-list-layout flex-column gap-10" cdkDropList (cdkDropListDropped)="drop($event)">
     @for (task of taskService.sortedTasks(); track task.id) {
     <app-task-item cdkDrag [task]="task"></app-task-item>
     }

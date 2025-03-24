@@ -1,13 +1,14 @@
-<div class="home-layout">
-  <div class="form-layout">
+<div class="home-layout flex-column al-center jc-start">
+  <div class="form-layout flex-column gap-40 al-center jc-center">
     <app-header></app-header>
     <app-color-mode-button></app-color-mode-button>
     <app-add-task-field class="full-width"></app-add-task-field>
 
-    <div class="list-layout">
+    <div class="list-layout flex-column gap-10">
       @if (this.taskService.tasks().length !== 0) {
-      <div class="filter-layout">
-        <div class="button-container">
+      <div class="filter-layout flex-row gap-10 jc-sp-bet">
+        <div class="button-container flex-row al-center jc-start gap-10">
+
           <app-dropdown-button buttonLabel="Filtrer" buttonIcon="tune" [items]="[
               { type: 'all', label: 'Toutes les tâches', icon: 'filter_alt' },
               { type: 'done', label: 'Tâches complétées', icon: 'task_alt' },
@@ -25,6 +26,7 @@
             { type: 'expirySoonest', label: 'Date d\'expiration (plus proche au plus éloignée)', icon: 'timer_off' }
           ]" [selectedType]="taskService.sortType()" (select)="setSortType($event)">
           </app-dropdown-button>
+
         </div>
         <app-reset-button></app-reset-button>
       </div>

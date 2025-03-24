@@ -1,12 +1,7 @@
 .search-bar-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
     width: 100%;
     border: 1px solid var(--blue-gray);
     background: var(--white);
-    gap: 5px;
     border-radius: 100px;
     height: fit-content;
 

@@ -1,17 +1,17 @@
-<div class="task-item-layout">
+<div class="task-item-layout flex-row al-center">
   <i class="material-icons drag">drag_indicator</i>
 
   <app-custom-checkbox (checked)="changCheckboxState($event)" [isChecked]="isChecked"></app-custom-checkbox>
 
   <!-- Titre de la task -->
-  <label for="taskCheckbox" class="task-title" [ngClass]="{ 'checked': isChecked }">
-    <div class="task-content">
+  <label for="taskCheckbox" class="task-title ellipsis" [ngClass]="{ 'checked': isChecked }">
+    <div class="task-content flex-column">
       @if (isEditMode) {
       <input #editInput class="my-input task" type="text" [(ngModel)]="task.label"
         (blur)="saveNewLabel(task.id, task.label)" (keyup.enter)="saveNewLabel(task.id, task.label)" />
       }
       @else {
-      <span class="task-label">{{task.label}}</span>
+      <span class="task-label ellipsis">{{task.label}}</span>
       }
       @if (task.expirationDate) {
       <span class="task-expiry" [ngClass]="getExpirationInfo(task.expirationDate).cssClass"
@@ -22,7 +22,7 @@
     </div>
   </label>
 
-  <div class="task-actions">
+  <div class="task-actions flex-row jc-end">
     @if (!isSetExpirationMode) {
 
     <!-- Bouton édition / enregistrement-->
@@ -42,7 +42,7 @@
 
     @else if (isSetExpirationMode) {
     <!-- Mode édition de date -->
-    <div class="always-display">
+    <div class="always-display flex-row al-center gap-5">
       <input matInput class="date-input" [matDatepicker]="picker" [(ngModel)]="task.expirationDate"
         (dateChange)="saveNewExpirationDate(task.id, $event.value)" />
       @if (task.expirationDate) {
