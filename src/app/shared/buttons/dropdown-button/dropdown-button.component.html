@@ -1,0 +1,16 @@
+<div class="btn-container">
+  <button [matMenuTriggerFor]="menu" class="menu-btn" [ngClass]="{ 'active': activeCondition }" [matBadge]="badgeValue"
+    matBadgeColor="accent" [matBadgeHidden]="badgeHidden" matBadgeOverlap="true" matBadgePosition="above after">
+    <i class="material-icons">{{ buttonIcon }}</i>
+    <span>{{ buttonLabel }}</span>
+  </button>
+</div>
+
+<mat-menu #menu="matMenu">
+  <ng-container *ngFor="let item of items">
+    <button class="menu-item-btn" (click)="onSelect(item.type)" [ngClass]="{ 'active': selectedType === item.type }">
+      <i class="material-icons">{{ item.icon }}</i>
+      <span>{{ item.label }}</span>
+    </button>
+  </ng-container>
+</mat-menu>

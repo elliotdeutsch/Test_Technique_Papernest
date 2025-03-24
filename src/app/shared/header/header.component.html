@@ -1,0 +1,9 @@
+<header>
+  <p class="uptitle">Test Technique Papernest By Elliot</p>
+  <h1>My Todo list App</h1>
+  <p class="subtitle" [ngClass]="{'success': taskService.countDoneTasks() === taskService.countTotalTasks()}">
+    <b>{{taskService.countDoneTasks()}}/{{taskService.countTotalTasks()}}</b>
+    {{taskService.countDoneTasks() > 1 ? 'tâches complétées' : "tâche complétée"}}</p>
+
+  <canvas #confettiCanvas class="confetti-canvas"></canvas>
+</header>

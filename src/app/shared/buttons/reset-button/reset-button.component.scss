@@ -1,0 +1,20 @@
+.reset-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border-radius: 10px;
+    background: none;
+    color: var(--black);
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    gap: 5px;
+    font-weight: 500;
+    margin-top: 10px;
+
+    &:hover {
+        background: var(--blue-gray);
+        // color: var(--white);
+    }
+}

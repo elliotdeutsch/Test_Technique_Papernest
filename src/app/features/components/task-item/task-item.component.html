@@ -1,0 +1,61 @@
+<div class="task-item-layout">
+  <i class="material-icons drag">drag_indicator</i>
+
+  <app-custom-checkbox (checked)="changCheckboxState($event)" [isChecked]="isChecked"></app-custom-checkbox>
+
+  <!-- Titre de la task -->
+  <label for="taskCheckbox" class="task-title" [ngClass]="{ 'checked': isChecked }">
+    <div class="task-content">
+      @if (isEditMode) {
+      <input #editInput class="my-input task" type="text" [(ngModel)]="task.label"
+        (blur)="saveNewLabel(task.id, task.label)" (keyup.enter)="saveNewLabel(task.id, task.label)" />
+      }
+      @else {
+      <span class="task-label">{{task.label}}</span>
+      }
+      @if (task.expirationDate) {
+      <span class="task-expiry" [ngClass]="getExpirationInfo(task.expirationDate).cssClass"
+        [matTooltip]="task.expirationDate | date: 'dd/MM/yyyy'">
+        {{getExpirationInfo(task.expirationDate).text}}
+      </span>
+      }
+    </div>
+  </label>
+
+  <div class="task-actions">
+    @if (!isSetExpirationMode) {
+
+    <!-- Bouton édition / enregistrement-->
+    @if (!isEditMode) {
+    <app-action-buttons icon="edit" tooltip="Modifier la tâche" (clicked)="enableEditMode()"></app-action-buttons>
+    } @else {
+    <app-action-buttons icon="check" tooltip="Enregistrer les modifications"
+      (clicked)="saveNewLabel(task.id, task.label)"></app-action-buttons>
+    }
+
+    <!-- Autres boutons -->
+    <app-action-buttons icon="access_time" tooltip="Ajouter une date d'expiration"
+      (clicked)="toggleExpirationMode()"></app-action-buttons>
+    <app-action-buttons icon="delete_outline" tooltip="Supprimer la tâche"
+      (clicked)="taskService.removeTask(task.id)"></app-action-buttons>
+    }
+
+    @else if (isSetExpirationMode) {
+    <!-- Mode édition de date -->
+    <div class="always-display">
+      <input matInput class="date-input" [matDatepicker]="picker" [(ngModel)]="task.expirationDate"
+        (dateChange)="saveNewExpirationDate(task.id, $event.value)" />
+      @if (task.expirationDate) {
+      <app-action-buttons icon="do_not_disturb" tooltip="Supprimer la date d'expiration"
+        (clicked)="removeExpirationDate(task.id)"></app-action-buttons>
+      }
+      <app-action-buttons icon="date_range" tooltip="Sélectionner une date d'expiration"
+        (clicked)="picker.open()"></app-action-buttons>
+      <app-action-buttons icon="close" tooltip="Fermer l'édition de date"
+        (clicked)="toggleExpirationMode()"></app-action-buttons>
+      <mat-datepicker #picker></mat-datepicker>
+    </div>
+    }
+
+  </div>
+</div>

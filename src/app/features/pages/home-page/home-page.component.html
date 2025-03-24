@@ -1,0 +1,36 @@
+<div class="home-layout">
+  <div class="form-layout">
+    <app-header></app-header>
+    <app-color-mode-button></app-color-mode-button>
+    <app-add-task-field class="full-width"></app-add-task-field>
+
+    <div class="list-layout">
+      @if (this.taskService.tasks().length !== 0) {
+      <div class="filter-layout">
+        <div class="button-container">
+          <app-dropdown-button buttonLabel="Filtrer" buttonIcon="tune" [items]="[
+              { type: 'all', label: 'Toutes les tâches', icon: 'filter_alt' },
+              { type: 'done', label: 'Tâches complétées', icon: 'task_alt' },
+              { type: 'todo', label: 'Tâches actives', icon: 'hourglass_empty' },
+              { type: 'soonExpiring', label: 'Expirant bientôt (< 7j)', icon: 'calendar_month' },
+              { type: 'expired', label: 'Tâches expirées', icon: 'timer_off' }
+            ]" [selectedType]="taskService.filterType()" [activeCondition]="taskService.filterType() !== 'all'"
+            [badgeValue]="taskService.filterType() !== 'all' ? '1' : '0'"
+            [badgeHidden]="taskService.filterType() === 'all'" (select)="setFilterType($event)">
+          </app-dropdown-button>
+          <app-dropdown-button buttonLabel="Trier" buttonIcon="sort" [items]="[
+            { type: 'drag', label: 'Par défaut (Ordre personnalisé)', icon: 'back_hand' },
+            { type: 'alphaAZ', label: 'Ordre alphabétique', icon: 'sort_by_alpha' },
+            { type: 'dateCreatedNewest', label: 'Date de création (plus récent au plus ancien)', icon: 'edit_calendar' },
+            { type: 'expirySoonest', label: 'Date d\'expiration (plus proche au plus éloignée)', icon: 'timer_off' }
+          ]" [selectedType]="taskService.sortType()" (select)="setSortType($event)">
+          </app-dropdown-button>
+        </div>
+        <app-reset-button></app-reset-button>
+      </div>
+      <app-search-bar></app-search-bar>
+      }
+      <app-task-list></app-task-list>
+    </div>
+  </div>
+</div>

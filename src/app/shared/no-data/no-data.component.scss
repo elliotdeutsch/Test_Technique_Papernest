@@ -1,0 +1,19 @@
+.no-data-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 40px;
+
+    .title {
+        font-size: 24px;
+        font-weight: 700;
+        color: var(--dark-gray);
+    }
+
+    .subtitle {
+        font-size: 16px;
+        color: var(--light-gray);
+    }
+}

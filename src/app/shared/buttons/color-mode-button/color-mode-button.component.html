@@ -1,0 +1,8 @@
+<button class="color-mode-btn" (click)="changeColorMode()"
+  [matTooltip]="isDarkMode ? 'Activer le mode clair' : 'Activer le mode sombre'">
+  @if (isDarkMode) {
+  <i class="material-icons">sunny</i>
+  } @else {
+  <i class="material-icons">nightlight_round</i>
+  }
+</button>

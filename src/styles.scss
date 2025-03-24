@@ -1,1 +1,88 @@
-/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+
+:root {
+    // Default (white) theme
+    --primary-color: #5a52ff;
+    --secondary-color: #1205ff;
+    --main-bg-color: #f8f9fa;
+    --red: #FF696B;
+    --orange: #ffad69;
+    --green: #4CAF50;
+    --blue-gray: #D4D8ED;
+    --black: #111827;
+    --dark-gray: #6B7280;
+    --light-gray: #9BA2AE;
+    --white: #ffffff;
+    --color-mode: #597a9b;
+
+    @include mat.menu-overrides((container-color: var(--white)));
+}
+
+// Dark Theme
+body.dark {
+    --primary-color: #818aff;
+    --secondary-color: #3a42a1;
+    --main-bg-color: #1e1e1e;
+    --red: #FF696B;
+    --orange: #ffad69;
+    --green: #4CAF50;
+    --blue-gray: #4d526c;
+    --black: #e9e9e9;
+    --dark-gray: #a5a5a5;
+    --light-gray: #8a8a8a;
+    --white: #333333;
+    --color-mode: #e1cf56;
+
+    @include mat.menu-overrides((container-color: var(--white)));
+}
+
+* {
+    box-sizing: border-box !important;
+}
+
+body {
+    font-family: 'Inter';
+    background-color: var(--main-bg-color);
+    color: var(--black);
+    margin: 0;
+    padding: 0;
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    span {
+        margin: 0;
+        padding: 0;
+    }
+}
+
+.full-width {
+    width: 100%;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--main-bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+    margin-left: 10px !important;
+    background: var(--blue-gray);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-color);
+}
