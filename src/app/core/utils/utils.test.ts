@@ -1,4 +1,3 @@
-// date-utils.spec.ts
 import {
   normalizeDate,
   getDifferenceDays,
